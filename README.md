@@ -1,7 +1,7 @@
 - Clone the repo
 
 ```jsx
-git clone 
+git clone: https://github.com/singhxanubhav/BridgePay.git
 ```
 
 - npm install
