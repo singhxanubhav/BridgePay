@@ -1,30 +1,57 @@
-"use server";
+'use server';
 
-import { getServerSession } from "next-auth";
-import { authOptions } from "../auth";
-import prisma from "@repo/db/client";
+import prisma from '@repo/db/client';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '../auth';
 
-export async function createOnRampTransaction(amount: number, provider: string) {
-    const session = await getServerSession(authOptions);
-    const token = Math.random().toString();
-    const userId = session.user.id;
-    if (!userId) {
-        return {
-            message: "User not logged in"
-        }
-    }
-    await prisma.onRampTransaction.create({
+export async function createOnRamptxn(amount: number, provider: string) {
+  const session = await getServerSession(authOptions);
+  const userId = (await session?.user?.id) || '';
+  const token = Math.random().toString().substring(2, 7);
+
+  if (!userId) {
+    return {
+      message: 'User not logged in',
+    };
+  }
+
+  try {
+    // Start the transaction with two operations:
+    await prisma.$transaction([
+      prisma.onRampTransaction.create({
         data: {
-            userId: Number(userId), // 1
-            amount: amount,
-            status: "Processing",
-            startTime: new Date(),
-            provider,
-            token: token
-        }
-    })
+          userId: Number(userId),
+          amount: amount,
+          provider,
+          status: "Completed", // Set status to "Completed"
+          token: token,
+          startTime: new Date(),
+        },
+      }),
+      prisma.balance.upsert({
+        where: {
+          userId: Number(userId),
+        },
+        update: {
+          amount: {
+            increment: amount,
+          },
+        },
+        create: {
+          userId: Number(userId),
+          amount: amount,
+          locked: 0,
+        },
+      }),
+    ]);
 
     return {
-        message: "On ramp transaction added"
-    }
+      message: 'Transaction created and balance updated successfully',
+    };
+  } catch (e) {
+    console.log(e);
+    return {
+      message: 'Error while processing transaction',
+    };
+  }
 }
