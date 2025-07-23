@@ -1,14 +1,14 @@
-
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../lib/auth";
 import prisma from "@repo/db/client";
 import { OnRampTransaction } from "../../../components/OnRampTransactions";
-import { Metadata } from 'next'
+import { Metadata } from 'next';
+import { OnRampStatus } from "@prisma/client";  // ✅ import enum
 
 export const metadata: Metadata = {
-  title: 'Transactions | Flowpay',
-  description: 'Track all your transactions effortlessly with Flowpay digital wallet application',
-}
+  title: 'Transactions | BridgePay',
+  description: 'Track all your transactions effortlessly with BridgePay digital wallet application',
+};
 
 async function getsentP2PTranscations() {
   const session = await getServerSession(authOptions);
@@ -21,7 +21,7 @@ async function getsentP2PTranscations() {
   return txns.map((t: any) => ({
     time: t.timestamp,
     amount: t.amount,
-    status: "Completed",
+    status: "Success",
     provider: t.provider,
   }));
 }
@@ -37,12 +37,12 @@ async function getreceivedP2PTranscations() {
   return txns.map((t: any) => ({
     time: t.timestamp,
     amount: t.amount,
-    status: "Completed",
+    status: "Success",
     provider: t.provider,
   }));
 }
 
-async function getOnRampTransactions(status: any) {
+async function getOnRampTransactions(status: OnRampStatus) {
   const session = await getServerSession(authOptions);
   const txns = await prisma.onRampTransaction.findMany({
     where: {
@@ -50,6 +50,7 @@ async function getOnRampTransactions(status: any) {
       status: status,
     },
   });
+
   return txns.map((t: any) => ({
     time: t.startTime,
     amount: t.amount,
@@ -68,9 +69,9 @@ export default async function TransactionsPage() {
   ] = await Promise.all([
     getsentP2PTranscations(),
     getreceivedP2PTranscations(),
-    getOnRampTransactions("Completed"),
-    getOnRampTransactions("Pending"),
-    getOnRampTransactions("Failed"),
+    getOnRampTransactions(OnRampStatus.Success),   // ✅ use enum
+    getOnRampTransactions(OnRampStatus.Processing),     // ✅ use enum
+    getOnRampTransactions(OnRampStatus.Failure),      // ✅ use enum
   ]);
 
   return (
@@ -85,6 +86,7 @@ export default async function TransactionsPage() {
           Track all your transactions effortlessly
         </p>
       </div>
+
       <div className="flex flex-col gap-5">
         <div className="w-full grid grid-cols-1 md:grid-cols-2 px-4 md:px-10 gap-3">
           <h1 className="text-2xl text-slate-800 pt-2 font-bold col-span-1 md:col-span-2">
