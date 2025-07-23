@@ -1,3 +1,4 @@
+
 import db from "@repo/db/client";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
@@ -13,12 +14,12 @@ export const authOptions = {
       name: "Phone",
       credentials: {
         phone: {
-          label: "Phone Number",
+          label: "Phone number",
           type: "text",
-          placeholder: "Number",
+          placeholder: "12345678",
           required: true,
         },
-        password: { label: "Password", type: "password", placeholder: "Number", required: true}
+        password: { label: "Password", type: "password", required: true, placeholder: "********" },
       },
 
       async authorize(credentials?: { phone: string; password: string }) {
@@ -76,18 +77,16 @@ export const authOptions = {
       },
     }),
   ],
-
-  /* eslint-disable turbo/no-undeclared-env-vars */
   secret: process.env.JWT_SECRET || "secret",
   callbacks: {
-    
+    // TODO: can u fix the type here? Using any is bad
     async session({ session, token }: any) {
       // Assuming `sub` is the user ID stored in the token
       session.user.id = token.sub;
       return session;
     },
   },
-//   pages: {
-//     signIn: "/auth",
-//   },
+  pages: {
+    signIn: "/auth",
+  },
 };

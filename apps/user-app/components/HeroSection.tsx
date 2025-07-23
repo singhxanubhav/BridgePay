@@ -121,12 +121,12 @@ export function HeroSection() {
             <h1 className="text-5xl font-extrabold tracking-tight text-gray-900 sm:text-6xl md:text-7xl">
               Simplify Your Finances with{' '}
               <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                FlowPay
+                BridgePay
               </span>
             </h1>
             <p className="mt-6 max-w-2xl mx-auto text-xl text-gray-600">
               Experience seamless fund management, expense tracking, and secure
-              money transfers with FlowPay - your all-in-one digital e-wallet
+              money transfers with BridgePay - your all-in-one digital e-wallet
               solution.
             </p>
           </motion.div>
@@ -157,7 +157,7 @@ export function HeroSection() {
           className="mt-32"
         >
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-16">
-            Why FlowPay Stands Out
+            Why BridgePay Stands Out
           </h2>
           <div className="grid md:grid-cols-3 gap-12">
             <BenefitItem
@@ -204,7 +204,7 @@ export function HeroSection() {
           className="mt-32"
         >
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-16">
-            How FlowPay Works
+            How BridgePay Works
           </h2>
           <div className="grid md:grid-cols-3 gap-12">
             <HowItWorksStep
@@ -215,7 +215,7 @@ export function HeroSection() {
             <HowItWorksStep
               number={2}
               title="Add Funds"
-              description="Easily transfer money from your bank account to your FlowPay wallet."
+              description="Easily transfer money from your bank account to your BridgePay wallet."
             />
             <HowItWorksStep
               number={3}
@@ -237,11 +237,11 @@ export function HeroSection() {
           </h2>
           <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
             Join thousands of users who are already enjoying the benefits of
-            FlowPay. Start your journey to smarter financial management today.
+            BridgePay. Start your journey to smarter financial management today.
           </p>
           <Link href="/api/auth/signin">
             <button className="group relative inline-flex items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-4 text-lg font-medium text-white hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 shadow-lg hover:shadow-xl">
-              Create Your FlowPay Account
+              Create Your BridgePay Account
               <ArrowRight className="ml-2 h-6 w-6 transform transition-transform group-hover:translate-x-1" />
             </button>
           </Link>
