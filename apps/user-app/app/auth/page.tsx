@@ -27,11 +27,11 @@ export default function LoginSignup() {
 
     if (res?.status === 201) {
       toast.success(
-        "Welcome to FlowPay! Your account has been created successfully.",
+        "Welcome to BridgePay! Your account has been created successfully.",
       );
       router.push("/dashboard");
     } else if (res?.status === 200) {
-      toast.success("You've successfully logged in to your FlowPay account.");
+      toast.success("You've successfully logged in to your BridgePay account.");
       router.push("/dashboard");
     } else {
       setError("Invalid phone number or password. Please try again.");
@@ -43,7 +43,7 @@ export default function LoginSignup() {
       <div className="bg-white rounded-lg shadow-xl p-8 max-w-md w-full">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900">
-            Welcome to <span className="text-blue-600 font-bold">FlowPay</span>
+            Welcome to <span className="text-blue-600 font-bold">BridgePay</span>
           </h1>
           <p className="text-gray-600 mt-2">Login or create your account</p>
         </div>
@@ -103,7 +103,7 @@ export default function LoginSignup() {
           </button>
         </form>
         <p className="mt-4 text-sm text-center text-gray-600">
-          By continuing, you agree to FlowPay's Terms of Service and Privacy
+          By continuing, you agree to BridgePay's Terms of Service and Privacy
           Policy.
         </p>
       </div>
