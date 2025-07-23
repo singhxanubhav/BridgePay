@@ -10,16 +10,22 @@ export const GET = async () => {
         user: session.user,
       });
     }
-  } catch (error) {
+  } catch (e: any) {
     return NextResponse.json(
       {
-        message: "You are not logged in",
+        error: e.message,
       },
       {
         status: 403,
-      }
+      },
     );
   }
-
-  
+  return NextResponse.json(
+    {
+      message: "You are not logged in",
+    },
+    {
+      status: 403,
+    },
+  );
 };
