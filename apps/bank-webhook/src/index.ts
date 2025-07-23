@@ -1,55 +1,94 @@
-import express from "express";
-import db from "@repo/db/client";
+import express from 'express';
+import db from '@repo/db/client';
+import { OnRampStatus } from "@prisma/client";
+import { z } from 'zod';
+
+const Port = process.env.PORT || 3003;
 const app = express();
+app.use(express.json());
 
-app.use(express.json())
+const TranscationSchema = z.object({
+  userId: z.string(),
+  amount: z.number(),
+  token: z.string(),
+});
 
-app.post("/hdfcWebhook", async (req, res) => {
-    //TODO: Add zod validation here?
-    //TODO: HDFC bank should ideally send us a secret so we know this is sent by them
-    const paymentInformation: {
-        token: string;
-        userId: string;
-        amount: string
-    } = {
-        token: req.body.token,
-        userId: req.body.user_identifier,
-        amount: req.body.amount
-    };
+// ** Function to handle pending transactions on server startup **
+async function processPendingTransactions() {
+  try {
+    const pendingTransactions = await db.onRampTransaction.findMany({
+      where: { status: OnRampStatus.Processing }, // ✅
+    });
 
-    try {
-        await db.$transaction([
-            db.balance.updateMany({
-                where: {
-                    userId: Number(paymentInformation.userId)
-                },
-                data: {
-                    amount: {
-                        // You can also get this from your DB
-                        increment: Number(paymentInformation.amount)
-                    }
-                }
-            }),
-            db.onRampTransaction.updateMany({
-                where: {
-                    token: paymentInformation.token
-                }, 
-                data: {
-                    status: "Success",
-                }
-            })
-        ]);
-
-        res.json({
-            message: "Captured"
-        })
-    } catch(e) {
-        console.error(e);
-        res.status(411).json({
-            message: "Error while processing webhook"
-        })
+    for (const transaction of pendingTransactions) {
+      await db.$transaction([
+        db.balance.update({
+          where: { userId: transaction.userId },
+          data: {
+            amount: {
+              increment: transaction.amount, // Increment user balance by transaction amount
+            },
+          },
+        }),
+        db.onRampTransaction.update({
+          where: { id: transaction.id },
+          data: { status: OnRampStatus.Success }, // ✅
+        }),
+      ]);
     }
 
-})
+    console.log(
+      `Processed ${pendingTransactions.length} pending transactions.`
+    );
+  } catch (error) {
+    console.error('Error processing pending transactions:', error);
+  }
+}
 
-app.listen(3003);
+app.post('/hdfcWebhook', async (req, res) => {
+  const result = TranscationSchema.safeParse(req.body);
+
+  if (!result.success) {
+    res.status(400).send(result.error);
+    return;
+  }
+
+  const paymentInformation = {
+    token: req.body.token,
+    userId: req.body.userId,
+    amount: req.body.amount,
+  };
+
+  try {
+    await db.$transaction([
+      db.balance.updateMany({
+        where: {
+          userId: Number(paymentInformation.userId),
+        },
+        data: {
+          amount: {
+            increment: Number(paymentInformation.amount),
+          },
+        },
+      }),
+      db.onRampTransaction.updateMany({
+        where: {
+          token: paymentInformation.token,
+        },
+        data: {
+          status: OnRampStatus.Success, // ✅
+        },
+      }),
+    ]);
+
+    res.status(200).json({ message: 'Captured payment' });
+  } catch (e) {
+    console.log(e);
+    res.status(411).json({ message: 'Error while Processing webhook' });
+  }
+});
+
+app.listen(Port, async () => {
+  console.log(`Server is running on ${Port}`);
+  await processPendingTransactions();
+});

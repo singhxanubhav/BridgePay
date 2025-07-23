@@ -9,19 +9,19 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({
   year = new Date().getFullYear(),
-  email = "support@flowpay.com",
+  email = "support@bridgepay.com",
 }) => {
   return (
     <footer className="bg-slate-100 text-gray-700 py-8 border-t border-slate-300">
       <div className="container mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">FlowPay</h3>
+            <h3 className="text-lg font-semibold">BridgePay</h3>
             <p className="text-sm">
               Simplifying your finances with secure and seamless digital
               payments.
             </p>
-            <p className="text-sm">© {year} FlowPay. All rights reserved.</p>
+            <p className="text-sm">© {year} BridgePay. All rights reserved.</p>
           </div>
 
           <div>
@@ -89,7 +89,7 @@ const Footer: React.FC<FooterProps> = ({
         </div>
 
         <div className="mt-8 pt-8 border-t border-slate-300 text-center text-sm text-gray-500">
-          <p>FlowPay is a registered trademark of FlowPay, Inc.</p>
+          <p>BridgePay is a registered trademark of BridgePay, Inc.</p>
         </div>
       </div>
     </footer>

@@ -24,7 +24,7 @@ export const Appbar = ({ user, onSignin, onSignout }: AppbarProps) => {
           className="font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent cursor-pointer"
           onClick={handleRedirect}
         >
-          Flowpay
+          BridgePay
         </div>
       </div>
       <div className="flex flex-col justify-center pt-2">

@@ -78,7 +78,7 @@ export default async function TransactionsPage() {
     <div className="w-full px-4 sm:px-6 lg:px-8">
       <div className="flex justify-center md:text-4xl mt-20 font-extrabold">
         <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-800">
-          <span className="text-blue-600">FlowPay </span>Transactions
+          <span className="text-blue-600">BridgePay </span>Transactions
         </h1>
       </div>
       <div className="text-center mb-8 sm:mb-12">

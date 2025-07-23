@@ -3,6 +3,7 @@
 import prisma from '@repo/db/client';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../auth';
+import { OnRampStatus } from "@prisma/client";
 
 export async function createOnRamptxn(amount: number, provider: string) {
   const session = await getServerSession(authOptions);
@@ -23,7 +24,7 @@ export async function createOnRamptxn(amount: number, provider: string) {
           userId: Number(userId),
           amount: amount,
           provider,
-          status: "Completed", // Set status to "Completed"
+          status: OnRampStatus.Success, // Set status to "Completed"
           token: token,
           startTime: new Date(),
         },

@@ -11,7 +11,7 @@ export default function TermsOfServicePage() {
       <div className="max-w-3xl mx-auto pt-20">
         <div className="text-center mb-12">
           <div className="text-3xl sm:text-4xl font-extrabold text-blue-600">
-            FlowPay <span className="text-slate-800">Terms of Service</span>{" "}
+            BridgePay <span className="text-slate-800">Terms of Service</span>{" "}
           </div>
           <div className="mt-2 text-lg sm:text-xl text-slate-800">
             Understand the terms of using BridgePay.
@@ -120,7 +120,7 @@ export default function TermsOfServicePage() {
             </h2>
             <p>
               If you have any questions about these Terms, please contact us at
-              terms@flowpay.com.
+              terms@bridgepay.com.
             </p>
           </section>
 

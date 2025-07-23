@@ -3,7 +3,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Home | BridgePay",
-  description: "Welcome to the Flowpay digital wallet application",
+  description: "Welcome to the BridgePay digital wallet application",
 };
 
 export default function Home() {

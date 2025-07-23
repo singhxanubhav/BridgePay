@@ -54,12 +54,12 @@ export const OnRampTransaction = ({
                     : `+ Rs ${t.amount / 100}`}
                 </div>
                 <div className="text-sm pr-1">
-                  {t.status === 'Completed' ? (
+                  {t.status === 'Success' ? (
                     <span className="text-green-500">Success</span>
-                  ) : t.status === 'Pending' ? (
-                    <span className="text-yellow-500">Pending</span>
+                  ) : t.status === 'Processing' ? (
+                    <span className="text-yellow-500">Processing</span>
                   ) : (
-                    <span className="text-red-500">Failed</span>
+                    <span className="text-red-500">Failure</span>
                   )}
                 </div>
               </div>

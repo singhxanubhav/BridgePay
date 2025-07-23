@@ -7,8 +7,8 @@ import { OnRampTransaction } from "../../../components/OnRampTransactions";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Dashboard | Flowpay",
-  description: "Dashboard for Flowpay digital wallet application",
+  title: "Dashboard | BridgePay",
+  description: "Dashboard for BridgePay digital wallet application",
 };
 
 import {
@@ -62,7 +62,7 @@ export default async function DashboardPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-12">
           <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-800">
-            <span className="text-blue-600">FlowPay </span>Dashboard
+            <span className="text-blue-600">BridgePay </span>Dashboard
           </h1>
           <p className="mt-2 text-lg sm:text-xl text-slate-800">
             Manage your finances with ease
@@ -127,7 +127,7 @@ export default async function DashboardPage() {
                 Add Funds
               </h3>
               <p className="text-gray-600 mb-4">
-                Top up your FlowPay wallet easily.
+                Top up your BridgePay wallet easily.
               </p>
               <div className="pt-1">
                 <a
