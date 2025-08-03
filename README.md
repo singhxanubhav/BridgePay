@@ -1,10 +1,5 @@
 # BridgePay
 
-
-![flowpay](https://github.com/user-attachments/assets/afa4d917-9912-4c6b-b995-785d8260abef)
-
-![BridgePay](https://img.shields.io/github/stars/PankajKumardev/Flowpay?style=social) ![Forks](https://img.shields.io/github/forks/PankajKumardev/Flowpay?style=social) ![Issues](https://img.shields.io/github/issues/PankajKumardev/Flowpay) ![License](https://img.shields.io/github/license/PankajKumardev/Flowpay)
-
 ## 🌟 Overview
 BridgePay is a cutting-edge peer-to-peer (P2P) payment and wallet management system, designed for effortless fund transfers and wallet functionalities. With a user-friendly interface and robust backend, BridgePay aims to simplify digital transactions for everyone.
 
@@ -59,7 +54,7 @@ BridgePay is a cutting-edge peer-to-peer (P2P) payment and wallet management sys
 ## 📥 Installation Process
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/PankajKumardev/Flowpay.git
+   git clone https://github.com/singhxanubhav/BridgePay.git
    cd Flowpay
    ```
 2. **Install dependencies:**
@@ -82,43 +77,6 @@ BridgePay is a cutting-edge peer-to-peer (P2P) payment and wallet management sys
    ```bash
    npm run build
    ```
-
----
-
-## 🤝 Contribution Guidelines
-### 🌱 How to Get Involved
-We warmly welcome contributions to BridgePay! Here's how you can get started:
-
-1. **Fork the repository** by clicking the "Fork" button.
-2. **Clone your fork:**
-   ```bash
-   git clone https://github.com/<your-username>/Flowpay.git
-   ```
-3. **Create a new branch:**
-   ```bash
-   git checkout -b feature/<feature-name>
-   ```
-4. **Set up the environment** (refer to installation steps).
-5. **Make changes** following coding standards.
-6. **Commit your changes:**
-   ```bash
-   git add .
-   git commit -m "Your descriptive commit message"
-   ```
-7. **Push changes:**
-   ```bash
-   git push origin <your-branch-name>
-   ```
-8. **Open a pull request** with a clear description of changes.
-
-### 📌 Suggested Contributions
-- **Enhancements:** Improve state management, Docker configuration, and UI/UX.
-- **Features:** Develop merchant app, add webhooks, and enhance FAQs.
-- **Bug Fixes:** Address open issues.
-
-### 🏅 Contributor Badges
-Showcase your contribution with pride! 🏆
-[![Contributors](https://img.shields.io/github/contributors/PankajKumardev/Flowpay)](https://github.com/PankajKumardev/Flowpay/graphs/contributors)
 
 ---
 
@@ -148,25 +106,10 @@ BridgePay was created to make digital finance seamless and accessible to everyon
 
 ---
 
-## 🛡 License
-BridgePay is available under the MIT License. Feel free to use and modify the code responsibly.
-
----
-
-## 📖 Changelog
-Refer to [`CHANGELOG.md`](https://github.com/PankajKumardev/Flowpay/blob/main/CHANGELOG.md) for version history and updates.
-
----
-
 ## 📬 Contact
 For queries or collaborations:
-- Email: [pankajams1234@gmail.com](mailto:pankajams1234@gmail.com)
-- LinkedIn: [Pankaj Kumar](https://www.linkedin.com/in/pankajkumardev0/)
-- Twitter: [@pankajkumar_dev](https://x.com/pankajkumar_dev)
+- Email: [anubhavsinghbkj@gmail.com](mailto:anubhavsinghbkj@gmail.com)
+- LinkedIn: [Anubhav Singh](https://www.linkedin.com/in/anubhavxsingh/)
+- Twitter: [@anubhavxsingh](https://x.com/anubhavxsingh)
 
 ---
-
-## 🌟 Stargazers & Forkers
-We appreciate your support! 🌟🍴
-
-[![Stargazers](https://img.shields.io/github/stars/PankajKumardev/Flowpay)](https://github.com/PankajKumardev/Flowpay/stargazers) [![Forks](https://img.shields.io/github/forks/PankajKumardev/Flowpay)](https://github.com/PankajKumardev/Flowpay/network/members)
