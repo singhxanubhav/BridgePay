@@ -13,7 +13,7 @@ export const Appbar = ({ user, onSignin, onSignout }: AppbarProps) => {
   const router = useRouter();
   function handleRedirect() {
     if (user) router.push("/dashboard");
-    else router.push("/home");
+    else router.push("/");
     console.log("redirecting to home page");
   }
 

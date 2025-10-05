@@ -11,7 +11,7 @@ export default async function Layout({
 }): Promise<JSX.Element> {
   const session = await getServerSession(authOptions);
   if (!session?.user) {
-    redirect("/home");
+    redirect("/");
   }
   return (
     <div className="flex pt-14 bg-slate-100 overflow-hidden">

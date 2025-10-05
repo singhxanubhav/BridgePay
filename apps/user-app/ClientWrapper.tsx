@@ -12,7 +12,7 @@ export default function ClientWrapper({
   const pathname = usePathname();
 
   const showAppbarAndFooter =
-    pathname !== "/home" &&
+    pathname !== "/" &&
     pathname !== "/auth" &&
     pathname !== "/Bank/hdfc" &&
     pathname !== "/Bank/axis";

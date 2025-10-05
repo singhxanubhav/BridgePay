@@ -12,7 +12,7 @@ export function AppbarClient() {
         onSignin={signIn}
         onSignout={async () => {
           await signOut();
-          router.push("/home");
+          router.push("/");
         }}
         user={session.data?.user}
       />
